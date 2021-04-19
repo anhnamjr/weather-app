@@ -37,7 +37,7 @@ export function LocationContainer({ location }) {
         )}
         <Location.Image src={icon} />
       </Location>
-      <ForecastHour city={originalLoc} />
+      <ForecastHour location={originalLoc} />
     </>
   );
 }

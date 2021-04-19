@@ -1,5 +1,13 @@
 import React from "react";
-import { Container, Input, Title, Button, Feature, InputContainer } from "./styles/searchForm";
+import {
+  Container,
+  Input,
+  Title,
+  Button,
+  Feature,
+  InputContainer,
+  Error,
+} from "./styles/searchForm";
 
 export default function SearchForm({ children, ...restProp }) {
   return <Container {...restProp}>{children}</Container>;
@@ -16,7 +24,10 @@ SearchForm.Feature = function SearchFormFeature({ children, ...restProp }) {
 SearchForm.Input = function SearchFormInput({ ...restProp }) {
   return (
     <InputContainer>
-      <img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/search-512.png" alt="Search Icon"/>
+      <img
+        src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/search-512.png"
+        alt="Search Icon"
+      />
       <Input {...restProp} />
     </InputContainer>
   );
@@ -25,3 +36,7 @@ SearchForm.Input = function SearchFormInput({ ...restProp }) {
 SearchForm.Button = function SearchFormButton({ children, ...restProp }) {
   return <Button {...restProp}>{children}</Button>;
 };
+
+SearchForm.Error = function SearchFormError({ children, ...restProp }) {
+  return <Error {...restProp}>{children}</Error>
+}

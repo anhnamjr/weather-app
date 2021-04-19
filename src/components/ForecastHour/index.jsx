@@ -6,23 +6,23 @@ import {
   Temperature,
   Icon,
   Inner,
-  Title
+  Title,
 } from "./styles/forecastHour";
 import axios from "axios";
 import { API_KEY } from "../../constant";
 
-export default function ForecastHour({ city, ...restProps }) {
+export default function ForecastHour({ location, ...restProps }) {
   const [listHours, setListHours] = useState([]);
 
   useEffect(() => {
     axios
       .get(
-        `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`
+        `http://api.openweathermap.org/data/2.5/forecast?q=${location}&appid=${API_KEY}&units=metric`
       )
       .then(({ data }) => {
         setListHours(data.list);
       });
-  }, [city]);
+  }, [location]);
 
   const forecastHour = listHours.map((item, index) => {
     const day = item.dt_txt.slice(5, 10);
@@ -68,4 +68,3 @@ ForecastHour.Icon = function ForecastHourImage({ src, ...restProps }) {
     <Icon src={`https://openweathermap.org/img/w/${src}.png`} {...restProps} />
   );
 };
-
